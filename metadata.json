@@ -1,0 +1,7 @@
+{
+  "name": "Laporan Kandang Ayam Petelur",
+  "description": "Aplikasi pencatatan laporan harian kandang ayam petelur: input jumlah telur, konsumsi pakan, pengeluaran lain-lain, dan grafik produktivitas harian (HDP, FCR, finansial).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

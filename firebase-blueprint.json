@@ -1,0 +1,58 @@
+{
+  "entities": {
+    "DailyReport": {
+      "title": "DailyReport",
+      "description": "Laporan harian kandang ayam petelur meliputi produksi telur, konsumsi pakan, mortalitas, dan pengeluaran lain-lain",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "ID unik laporan" },
+        "date": { "type": "string", "description": "Tanggal laporan format YYYY-MM-DD" },
+        "flockName": { "type": "string", "description": "Nama blok atau kandang" },
+        "activeHens": { "type": "number", "description": "Populasi ayam hidup" },
+        "deadHens": { "type": "number", "description": "Kematian ayam hari ini" },
+        "culledHens": { "type": "number", "description": "Ayam afkir hari ini" },
+        "eggGoodPieces": { "type": "number", "description": "Jumlah telur utuh (butir)" },
+        "eggBrokenPieces": { "type": "number", "description": "Jumlah telur rusak/retak (butir)" },
+        "eggWeightKg": { "type": "number", "description": "Total bobot telur (kg)" },
+        "feedConsumptionKg": { "type": "number", "description": "Konsumsi pakan (kg)" },
+        "feedType": { "type": "string", "description": "Jenis atau komposisi pakan" },
+        "feedPricePerKg": { "type": "number", "description": "Harga pakan per kg" },
+        "eggSellingPricePerKg": { "type": "number", "description": "Harga jual telur per kg" },
+        "otherExpenses": {
+          "type": "array",
+          "description": "Rincian pengeluaran operasional lain-lain"
+        },
+        "notes": { "type": "string", "description": "Catatan khusus kandang" },
+        "createdAt": { "type": "string", "description": "Timestamp pembuatan" },
+        "updatedAt": { "type": "string", "description": "Timestamp pembaruan terakhir" }
+      },
+      "required": ["id", "date", "activeHens", "eggGoodPieces", "eggWeightKg", "feedConsumptionKg"]
+    },
+    "FarmSettings": {
+      "title": "FarmSettings",
+      "description": "Pengaturan profil peternakan, nama kandang, dan standar harga operasional",
+      "type": "object",
+      "properties": {
+        "farmName": { "type": "string", "description": "Nama peternakan" },
+        "flockName": { "type": "string", "description": "Nama kandang" },
+        "chickenAgeWeeks": { "type": "number", "description": "Umur ayam dalam minggu" },
+        "initialPopulation": { "type": "number", "description": "Populasi awal ayam" },
+        "defaultFeedPricePerKg": { "type": "number", "description": "Harga pakan standar" },
+        "defaultEggPricePerKg": { "type": "number", "description": "Harga jual telur standar" },
+        "defaultFeedType": { "type": "string", "description": "Jenis pakan standar" },
+        "updatedAt": { "type": "string", "description": "Waktu pembaruan" }
+      },
+      "required": ["farmName", "flockName", "initialPopulation"]
+    }
+  },
+  "firestore": {
+    "/daily_reports/{reportId}": {
+      "schema": "DailyReport",
+      "description": "Koleksi rekaman laporan harian kandang ayam petelur"
+    },
+    "/farm_settings/{settingId}": {
+      "schema": "FarmSettings",
+      "description": "Dokumen konfigurasi dan profil peternakan"
+    }
+  }
+}
